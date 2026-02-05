@@ -1,0 +1,27 @@
+{
+  "userId": "api",
+  "password": "********",
+  "companyCode": "SHK",
+  "businessGroups": [
+    {
+      "lineNo": 1,
+      "businessGroup": "TCL024U",
+      "description": "EMS2-2 Expenses allocation",
+      "stxjBusinessLine": "XXX",
+      "branchBusinessLine": "YYY",
+      "lastUpdateProgramId": "MEM2BSG",
+      "lastUpdateUserId": "GSC",
+      "lastUpdateDatetime": "2025-11-04T23:23:23+08:00"
+    },
+    {
+      "lineNo": 2,
+      "businessGroup": "TCL024H",
+      "description": "EMS2-2 Expenses allocation 2",
+      "stxjBusinessLine": "XXX",
+      "branchBusinessLine": "YYY",
+      "lastUpdateProgramId": "MEM2BSG",
+      "lastUpdateUserId": "GSC",
+      "lastUpdateDatetime": "2025-11-04T23:23:23+08:00"
+    }
+  ]
+}

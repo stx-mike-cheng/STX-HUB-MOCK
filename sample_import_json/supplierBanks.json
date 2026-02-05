@@ -1,0 +1,33 @@
+{
+  "userId": "MIKE",
+  "password": "1234",
+  "companyCode": "SHK",
+  "supplierBanks": [
+    {
+      "lineNo": 1,
+      "supplierCode": "ABCDEFU",
+      "currencyCode": "USD",
+      "sequenceNumber": 1,
+      "activeFlag": "Y",
+      "payeeBankAccountNumber": "123-123456-888",
+      "payeeBankName": "HSBC HONG KONG",
+      "paymentType": "tt",
+      "lastUpdateProgramId": "MASSUPBANK",
+      "lastUpdateUserId": "ADMIN",
+      "lastUpdateDatetime": "2025-11-04 23:23:23"
+    },
+    {
+      "lineNo": 2,
+      "supplierCode": "ABCDEFU",
+      "currencyCode": "USD",
+      "sequenceNumber": 2,
+      "activeFlag": "Y",
+      "payeeBankAccountNumber": "123-123456-777",
+      "payeeBankName": "HSBC HONG KONG",
+      "paymentType": "tt",
+      "lastUpdateProgramId": "MASSUPBANK",
+      "lastUpdateUserId": "ADMIN",
+      "lastUpdateDatetime": "2025-11-04 23:23:23"
+    }
+  ]
+}

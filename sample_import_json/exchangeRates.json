@@ -1,0 +1,31 @@
+{
+  "userId": "MIKE",
+  "password": "1234",
+  "companyCode": "SHK",
+  "exchangeRates": [
+    {
+      "lineNo": 1,
+      "effectiveDate": "2026-01-01",
+      "currencyFrom": "HKD",
+      "currencyTo": "HKD",
+      "buyRate": 1.00,
+      "sellRate": 1.00,
+      "internalRate": 1.00,
+      "lastUpdateProgramId": "MM2CUR",
+      "lastUpdateUserId": "ADMIN",
+      "lastUpdateDatetime": "2025-11-04 23:23:23"
+    },
+    {
+      "lineNo": 2,
+      "effectiveDate": "2026-01-01",
+      "currencyFrom": "USD",
+      "currencyTo": "USD",
+      "buyRate": 1.00,
+      "sellRate": 1.00,
+      "internalRate": 1.00,
+      "lastUpdateProgramId": "MM2CUR",
+      "lastUpdateUserId": "ADMIN",
+      "lastUpdateDatetime": "2025-11-04 23:23:23"
+    }
+  ]
+}

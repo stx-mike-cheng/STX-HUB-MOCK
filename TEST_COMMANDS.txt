@@ -1,0 +1,80 @@
+﻿::Mike's Note for Testing
+::2026-02-05
+
+REM Notes
+REM 1. Port = 4000: Since .28 has PORT set to 4000, the service will bind to :400
+REM 2. Modes:
+REM ?mode=ok (default) → all success
+REM ?mode=empty → returns zero counts
+REM ?mode=partial&fail=2 → mark 2 items as failed (basic simulation)
+REM ?mode=error → whole batch fails
+
+::Start mock server with PM2
+pm2 start ecosystem.config.js
+
+::Check system port
+set | findstr PORT
+::PORT=4000
+
+
+::Project root @ .28
+cd c:\apps\STX-HUB-MOCK
+
+::Health Check
+curl -X GET http://10.10.11.28:4000/
+
+::COA Search
+curl -X GET http://10.10.11.28:4000/api/v1/coas/search
+curl -X GET http://10.10.11.28:4000/api/v1/coas/search?mode=empty
+curl -X GET http://10.10.11.28:4000/api/v1/coas/search?mode=error
+
+::Business Group Import
+curl -X POST "http://10.10.11.28:4000/api/v1/business-groups/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/businessGroups.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/business-groups/import?mode=ok"
+curl -X POST "http://10.10.11.28:4000/api/v1/business-groups/import?mode=error"
+
+::Customer Import
+curl -X POST "http://10.10.11.28:4000/api/v1/customers/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/customers.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/customers/import?mode=ok"
+curl -X POST "http://10.10.11.28:4000/api/v1/customers/import?mode=error"
+
+::Exchange Rate Import
+curl -X POST "http://10.10.11.28:4000/api/v1/exchange-rates/import" ^
+  -H "Content-Type: application/json" ^
+  --data-binary "@./sample_import_json/exchangeRates.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/exchange-rates/import?mode=ok"
+curl -X POST "http://10.10.11.28:4000/api/v1/exchange-rates/import?mode=error"
+
+::Supplier Import
+curl -X POST "http://10.10.11.28:4000/api/v1/suppliers/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/suppliers.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/suppliers/import?mode=ok"
+curl -X POST "http://10.10.11.28:4000/api/v1/suppliers/import?mode=error"
+
+::Supplier Bank Import
+curl -X POST "http://10.10.11.28:4000/api/v1/supplier-banks/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/supplierBanks.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/supplier-banks/import?mode=ok"
+curl -X POST "http://10.10.11.28:4000/api/v1/supplier-banks/import?mode=error"
+
+::Trade Impor
+curl -X POST "http://10.10.11.28:4000/api/v1/trades/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/trades.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/trades/import?mode=ok"
+curl -X POST "http://10.10.11.28:4000/api/v1/trades/import?mode=error"
+
+
+::Summary (without json)
+curl -X GET "http://10.10.11.28:4000/health"
+curl -X GET "http://10.10.11.28:4000/api/v1/coas/search"
+curl -X POST "http://10.10.11.28:4000/api/v1/business-groups/import"
+curl -X POST "http://10.10.11.28:4000/api/v1/customers/import"
+curl -X POST "http://10.10.11.28:4000/api/v1/exchange-rates/import"
+curl -X POST "http://10.10.11.28:4000/api/v1/suppliers/import"
+curl -X POST "http://10.10.11.28:4000/api/v1/supplier-banks/import"
+curl -X POST "http://10.10.11.28:4000/api/v1/trades/import"
+
+::Summary (with json)
+curl -X POST "http://10.10.11.28:4000/api/v1/business-groups/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/businessGroups.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/customers/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/customers.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/exchange-rates/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/exchangeRates.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/suppliers/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/suppliers.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/supplier-banks/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/supplierBanks.json"
+curl -X POST "http://10.10.11.28:4000/api/v1/trades/import" -H "Content-Type: application/json" --data-binary "@./sample_import_json/trades.json"

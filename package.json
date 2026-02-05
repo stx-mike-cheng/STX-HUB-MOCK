@@ -1,0 +1,17 @@
+{
+  "name": "stx-hub-mock",
+  "version": "1.0.0",
+  "description": "Mock HUB API for EMS, prepared by Mike",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0"
+  }
+}

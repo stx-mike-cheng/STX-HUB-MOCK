@@ -1,0 +1,49 @@
+{
+  "userId": "MIKE",
+  "password": "1234",
+  "companyCode": "SHK",
+  "customers": [
+    {
+      "lineNo": 1,
+      "customerCode": "ABCDEFU",
+      "currencyCode": "USD",
+      "name": "TEST LIMITED",
+      "localName": "測試有限公司",
+      "shortName": "TEST LIMITED",
+      "countryCode": "HK",
+      "customerType": "1-GC-3",
+      "taxCode": "STX-TAXON",
+      "paymentTerm": "EM030",
+      "paymentType": "PTYPE",
+      "addressLine1": "RM 123, HAPPY PLAZA, 111-113 MING MING RD",
+      "addressLine2": "KWUN TONG, KOWLOON, HONG KONG",
+      "telephoneNumber1": "(0852) 1234 1234",
+      "emailAddress": "test@happy-happy.com",
+      "personInCharge1": "MRS HAPPY",
+      "lastUpdateProgramId": "MEM2CUS",
+      "lastUpdateUserId": "GSC",
+      "lastUpdateDatetime": "2025-11-04T23:23:23+08:00"
+    },
+    {
+      "lineNo": 2,
+      "customerCode": "ABCDEFUXX",
+      "currencyCode": "USD",
+      "name": "TEST LIMITED 2",
+      "localName": "測試有限公司2",
+      "shortName": "TEST LIMITED 2",
+      "countryCode": "HK",
+      "customerType": "1-GC-3",
+      "taxCode": "STX-TAXON",
+      "paymentTerm": "EM030",
+      "paymentType": "PTYPE",
+      "addressLine1": "RM 123, HAPPY PLAZA, 111-113 MING MING RD",
+      "addressLine2": "KWUN TONG, KOWLOON, HONG KONG",
+      "telephoneNumber1": "(0852) 1234 1234",
+      "emailAddress": "test@happy-happy.com",
+      "personInCharge1": "MRS HAPPY",
+      "lastUpdateProgramId": "MEM2CUS",
+      "lastUpdateUserId": "GSC",
+      "lastUpdateDatetime": "2025-11-04T23:23:23+08:00"
+    }
+  ]
+}
