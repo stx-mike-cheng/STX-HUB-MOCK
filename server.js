@@ -11,6 +11,8 @@
  * ================================================================
  */
 
+import fs from 'fs';
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -24,10 +26,42 @@ const app = express();
 app.use(helmet());
 app.use(cors()); // Allow EMS calls during internal testing
 app.use(express.json({ limit: '2mb' }));
-if (process.env.NODE_ENV !== 'production') {
-  app.use(morgan('combined'));
-}
 
+const logStream = fs.createWriteStream(path.join(process.cwd(), 'access.log'), {
+  flags: 'a' // append mode
+});
+
+const reqLogStream = fs.createWriteStream(
+  path.join(process.cwd(), 'request.log'),
+  { flags: 'a' }
+);
+
+//if (process.env.NODE_ENV !== 'production') {
+  //app.use(morgan('combined'));	// console
+  app.use(morgan('combined', { stream: logStream })); // file
+//}
+
+app.use((req, res, next) => {
+  const ip =
+    req.headers['x-forwarded-for'] ||   // if behind proxy (not your case now, but safe)
+    req.socket.remoteAddress ||        // direct TCP IP
+    req.ip;                            // Express-parsed IP
+  
+  const ua = req.headers['user-agent'];
+  
+  const logEntry = [
+    `----- ${nowFds()} -----`,
+    `URL: ${req.method} ${req.originalUrl}`,
+    `Caller IP: ${ip}`,
+    `Caller App (User-Agent): ${ua}`,
+    `Headers: ${JSON.stringify(req.headers, null, 2)}`,
+    `Body: ${JSON.stringify(req.body, null, 2)}`,
+    '\n'
+  ].join('\n');
+
+  reqLogStream.write(logEntry);
+  next();
+});
 
 // ---------- Helpers ----------
 function nowFds() {
